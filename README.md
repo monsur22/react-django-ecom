@@ -9,3 +9,4 @@
 <br>django-admin startproject backend
 <br><b>backend folder:=></b>
 <br>python manage.py runserver
+<br>python manage.py startapp base
