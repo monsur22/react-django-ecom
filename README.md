@@ -7,5 +7,5 @@
 <br>pip list
 <br>pip install django
 <br>django-admin startproject backend
-<br><b>backend folder:=></b>
+<br><b>Backend folder:=></b>
 <br>python manage.py runserver
