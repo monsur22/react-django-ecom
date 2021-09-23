@@ -16,7 +16,7 @@ function App() {
       <Router>
         <Header />
         <Route path="/" component={Home} exact></Route>
-        <Route path="/Single" component={Single} exact></Route>
+        <Route path="/Single/:id" component={Single} exact></Route>
         <Route path="/Login" component={Login} exact></Route>
         <Route path="/Registration" component={Registration} exact></Route>
         <Route path="/Products" component={Products} exact></Route>

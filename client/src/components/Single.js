@@ -1,6 +1,18 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
+import axios from 'axios';
+const Single = ({match}) => {
+    const [product, setProduct]=useState([])
 
-const Single = () => {
+    useEffect(() =>{
+
+        async function fetchProducts(){
+            const {data} = await axios.get(`/api/product/${match.params.id}`)
+            setProduct(data)
+            console.log(data)
+        }
+        fetchProducts()
+    },[])
+
     return (
         <>
             <div className="single">
@@ -23,7 +35,7 @@ const Single = () => {
                 </div>
                 <div className="col-md-7 single-top-in">
                     <div className="single-para simpleCart_shelfItem">
-                    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>
+                    <h1>{product.name}</h1>
                     <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
                     <div className="star-on">
                         <ul>
