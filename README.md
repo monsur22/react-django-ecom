@@ -10,3 +10,6 @@
 <br><b>backend folder:=></b>
 <br>python manage.py runserver
 <br>python manage.py startapp base
+<br>python manage.py migrate
+<br>python manage.py migrate createsuperuser
+<br>python manage.py makemigrations
