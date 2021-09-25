@@ -36,7 +36,7 @@ const Single = ({match}) => {
                 <div className="col-md-7 single-top-in">
                     <div className="single-para simpleCart_shelfItem">
                     <h1>{product.name}</h1>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                    <p>{product.description}</p>
                     <div className="star-on">
                         <ul>
                         <li><a href="#"><i className="glyphicon glyphicon-star"> </i></a></li>
@@ -46,13 +46,13 @@ const Single = ({match}) => {
                         <li><a href="#"><i className="glyphicon glyphicon-star"> </i></a></li>
                         </ul>
                         <div className="review">
-                        <a href="#"> 3 reviews </a>/
+                        <a href="#"> {product.numReviews} reviews </a>/
                         <a href="#">  Write a review</a>
                         </div>
                         <div className="clearfix"> </div>
                     </div>
-                    <label className="add-to item_price">$32.8</label>
-                    <div className="available">
+                    <label className="add-to item_price">${product.price}</label>
+                    {/* <div className="available">
                         <h6>Available Options :</h6>
                         <ul>
                         <li>Size:<select>
@@ -68,8 +68,9 @@ const Single = ({match}) => {
                             <option>Euro</option>
                             </select></li>
                         </ul>
-                    </div>
-                    <a href="#" className="cart item_add">More details</a>
+                    </div> */}
+                    <a href="#" className="cart item_add">Add To Cart</a>
+
                     </div>
                 </div>
                 <div className="clearfix"> </div>

@@ -28,3 +28,8 @@ python manage.py makemigrations
 python manage.py migrate
 <br>
 pip install pillow
+
+
+# REACT REDUX INSTALLATION
+<br>
+npm install redux react-redux redux-thunk redux-devtools-extension
