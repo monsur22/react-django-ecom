@@ -1,18 +1,26 @@
 import React,{useState, useEffect} from 'react'
-import axios from 'axios';
-const Single = ({match}) => {
-    const [product, setProduct]=useState([])
+import { useDispatch, useSelector } from 'react-redux'
+import { listProductDetails, createProductReview } from '../actions/productAction';
+
+
+const Single = ({history,match}) => {
+    const [qty , setQty] = useState(1)
+    const [rating , setRating] = useState(0)
+    const [comment , setComment] = useState('')
+
+    const dispatch = useDispatch()
+
+    const productDetails = useSelector((state) => state.productDetails)
+    const { loading, error, product } = productDetails
 
     useEffect(() =>{
 
-        async function fetchProducts(){
-            const {data} = await axios.get(`/api/product/${match.params.id}`)
-            setProduct(data)
-            console.log(data)
-        }
-        fetchProducts()
-    },[])
+        dispatch(listProductDetails(match.params.id))
+    }, [dispatch, match])
 
+    const addToCartHandler = () =>{
+        history.push(`/cart/${match.params.id}?qty=${qty}`)
+    }
     return (
         <>
             <div className="single">
@@ -22,14 +30,9 @@ const Single = ({match}) => {
                     <div className="flexslider">
                     <ul className="slides">
                         <li data-thumb="images/si.jpg">
-                        <div className="thumb-image"> <img src="images/si.jpg" data-imagezoom="true" className="img-responsive" /> </div>
+                        <div className="thumb-image"> <img src={product.image} data-imagezoom="true" className="img-responsive" /> </div>
                         </li>
-                        <li data-thumb="images/si1.jpg">
-                        <div className="thumb-image"> <img src="images/si1.jpg" data-imagezoom="true" className="img-responsive" /> </div>
-                        </li>
-                        <li data-thumb="images/si2.jpg">
-                        <div className="thumb-image"> <img src="images/si2.jpg" data-imagezoom="true" className="img-responsive" /> </div>
-                        </li>
+
                     </ul>
                     </div>
                 </div>
@@ -52,70 +55,27 @@ const Single = ({match}) => {
                         <div className="clearfix"> </div>
                     </div>
                     <label className="add-to item_price">${product.price}</label>
-                    {/* <div className="available">
-                        <h6>Available Options :</h6>
-                        <ul>
-                        <li>Size:<select>
-                            <option>Large</option>
-                            <option>Medium</option>
-                            <option>small</option>
-                            <option>Large</option>
-                            <option>small</option>
-                            </select></li>
-                        <li>Cost:
-                            <select>
-                            <option>U.S.Dollar</option>
-                            <option>Euro</option>
-                            </select></li>
-                        </ul>
-                    </div> */}
-                    <a href="#" className="cart item_add">Add To Cart</a>
+                    <ul>
+                    {product.countInStock > 0 && (
+                        <div className="row">
+                          <div>Qty</div>
+                            <div>
+                                <select value={qty} onChange={(e) => { setQty(e.target.value) }}>
+                                    {[...Array(product.countInStock).keys()].map(x =>
+                                    <option key={x + 1} value={x + 1}>{x + 1}</option>
+                                    )}
+                                </select>
+                            </div>
+                        </div>
+
+
+                    )}
+                    </ul>
+                    <a  className="cart item_add"onClick={addToCartHandler}disabled={product.countInStock === 0}>Add To Cart</a>
 
                     </div>
                 </div>
-                <div className="clearfix"> </div>
-                <div className="content-top1">
-                    <div className="col-md-4 col-md3">
-                    <div className="col-md1 simpleCart_shelfItem">
-                        <a href="single.html">
-                        <img className="img-responsive" src="images/pi6.png" alt />
-                        </a>
-                        <h3><a href="single.html">Jeans</a></h3>
-                        <div className="price">
-                        <h5 className="item_price">$300</h5>
-                        <a href="#" className="item_add">Add To Cart</a>
-                        <div className="clearfix"> </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="col-md-4 col-md3">
-                    <div className="col-md1 simpleCart_shelfItem">
-                        <a href="single.html">
-                        <img className="img-responsive" src="images/pi7.png" alt />
-                        </a>
-                        <h3><a href="single.html">Tops</a></h3>
-                        <div className="price">
-                        <h5 className="item_price">$300</h5>
-                        <a href="#" className="item_add">Add To Cart</a>
-                        <div className="clearfix"> </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="col-md-4 col-md3">
-                    <div className="col-md1 simpleCart_shelfItem">
-                        <a href="single.html">
-                        <img className="img-responsive" src="images/pi.png" alt />
-                        </a>
-                        <h3><a href="single.html">Tops</a></h3>
-                        <div className="price">
-                        <h5 className="item_price">$300</h5>
-                        <a href="#" className="item_add">Add To Cart</a>
-                        <div className="clearfix"> </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="clearfix"> </div>
-                </div>
+
                 </div>
                 {/*-*/}
                 <div className="col-md-3 product-bottom">
