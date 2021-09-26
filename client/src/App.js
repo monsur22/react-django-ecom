@@ -21,7 +21,7 @@ function App() {
         <Route path="/Registration" component={Registration} exact></Route>
         <Route path="/Products" component={Products} exact></Route>
         <Route path="/Contact" component={Contact} exact></Route>
-        <Route path="/Checkout" component={Checkout} exact></Route>
+        <Route path="/Checkout/:id?" component={Checkout} exact></Route>
         <Footer />
 
     </Router>
