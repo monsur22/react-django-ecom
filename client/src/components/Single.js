@@ -19,7 +19,7 @@ const Single = ({history,match}) => {
     }, [dispatch, match])
 
     const addToCartHandler = () =>{
-        history.push(`/cart/${match.params.id}?qty=${qty}`)
+        history.push(`/Checkout/${match.params.id}?qty=${qty}`)
     }
     return (
         <>
