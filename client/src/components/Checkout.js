@@ -20,6 +20,14 @@ const Checkout = ({match, location, history}) => {
     }, [dispatch, productId, qty])
         console.log(qty)
 
+        const removeFromCartHandler = (id) => {
+            dispatch(removeFromCart(id))
+        }
+        // const checkoutHandler = (id) => {
+        //     // console.log('checkout')
+        //     history.push('/login?redirect=shipping')
+        // }
+
     return (
 
         <>
@@ -32,45 +40,31 @@ const Checkout = ({match, location, history}) => {
                     <th>Qty</th>
                     <th>Prices</th>
                     <th>Delery Detials</th>
-                    <th>Subtotal</th>
+                    <th>Romove</th>
                     </tr>
+                    {cartItems.map(item =>
                     <tr>
-                    <td className="ring-in"><a href="single.html" className="at-in"><img src="images/ce.jpg" className="img-responsive" alt /></a>
+                    <td className="ring-in"><a href="single.html" className="at-in"><img src={item.image} className="img-responsive" alt /></a>
                         <div className="sed">
-                        <h5>Sed ut perspiciatis unde</h5>
-                        <p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium) </p>
+                        <h5>{item.name}</h5>
                         </div>
                         <div className="clearfix"> </div></td>
-                    <td className="check"><input type="text" defaultValue={1} onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}" /></td>
-                    <td>$100.00</td>
+                    <td className="check"><input type="text" value={item.qty}  onChange= {(e) => dispatch(addToCart(item.product, Number(e.target.value)))}/></td>
+                    <td>${item.price}</td>
                     <td>FREE SHIPPING</td>
-                    <td>$100.00</td>
+                    <td><a onClick={() => removeFromCartHandler(item.product)}><i class="glyphicon glyphicon-trash"></i></a></td>
                     </tr>
-                    <tr>
-                    <td className="ring-in"><a href="single.html" className="at-in"><img src="images/ce1.jpg" className="img-responsive" alt /></a>
-                        <div className="sed">
-                        <h5>Sed ut perspiciatis unde</h5>
-                        <p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium ) </p>
-                        </div>
-                        <div className="clearfix"> </div></td>
-                    <td className="check"><input type="text" defaultValue={1} onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}" /></td>
-                    <td>$200.00</td>
-                    <td>FREE SHIPPING</td>
-                    <td>$200.00</td>
-                    </tr>
-                    <tr>
-                    <td className="ring-in"><a href="single.html" className="at-in"><img src="images/ce2.jpg" className="img-responsive" alt /></a>
-                        <div className="sed">
-                        <h5>Sed ut perspiciatis unde</h5>
-                        <p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium) </p>
-                        </div>
-                        <div className="clearfix"> </div></td>
-                    <td className="check"><input type="text" defaultValue={1} onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}" /></td>
-                    <td>$150.00</td>
-                    <td>FREE SHIPPING</td>
-                    <td>$150.00</td>
-                    </tr>
+                    )
+                    }
+
                 </tbody></table>
+                <div>
+                <h3>
+                    Subtotal ( {cartItems.reduce((a, c) => a + c.qty, 0)} items)
+                    :
+                    $ {cartItems.reduce((a, c) => a + c.price * c.qty, 0).toFixed(2)}
+                </h3>
+                </div>
                 <a href="#" className=" to-buy">PROCEED TO BUY</a>
                 <div className="clearfix"> </div>
             </div>
