@@ -14,7 +14,7 @@ const Registration = () => {
                     <span>Last Name</span>
                     <input type="text" />
                     <span>Email Address</span>
-                    <input type="text" />
+                    <input type="email" />
                     </div>
                     <div className="clearfix"> </div>
                     <a className="news-letter" href="#">
@@ -24,9 +24,9 @@ const Registration = () => {
                 <div className=" col-md-6 register-bottom-grid">
                     <div className="mation">
                     <span>Password</span>
-                    <input type="text" />
+                    <input type="password" />
                     <span>Confirm Password</span>
-                    <input type="text" />
+                    <input type="password" />
                     </div>
                 </div>
                 <div className="clearfix"> </div>

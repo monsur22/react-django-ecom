@@ -26,8 +26,8 @@ const Header = () => {
 						<a href="index.html"><img src="images/logo.png" alt /></a>
 					</div>
 					<div className="col-sm-4 header-left">
-						<p className="log"><a href="account.html">Login</a>
-						<span>or</span><a href="account.html">Signup</a></p>
+						<p className="log"><a href="/Login">Login</a>
+						<span>or</span><a href="/Registration">Signup</a></p>
 						<div className="cart box_1">
 						<a href="checkout.html">
 							<h3> <div className="total">
