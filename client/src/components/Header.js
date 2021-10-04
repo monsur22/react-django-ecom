@@ -1,6 +1,18 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../actions/userAction'
 
 const Header = () => {
+	const userLogin = useSelector((state) => state.userLogin)
+    const { loading, error, userInfo } = userLogin
+
+    const dispatch = useDispatch()
+
+	const logutHandler = () => {
+		// console.log('logout');
+        dispatch(logout())
+
+	}
     return (
         <div>
 			<div className="header">
@@ -26,8 +38,17 @@ const Header = () => {
 						<a href="index.html"><img src="images/logo.png" alt /></a>
 					</div>
 					<div className="col-sm-4 header-left">
-						<p className="log"><a href="/Login">Login</a>
-						<span>or</span><a href="/Registration">Signup</a></p>
+						<p className="log">
+						{
+							userInfo ? (
+								// <a>Logout</a>
+								<a onClick={logutHandler}>Logout</a>
+
+
+						):  <a href="/Login">Login</a>
+						}
+						<span>or</span><a href="/Registration">Signup</a>
+						</p>
 						<div className="cart box_1">
 						<a href="checkout.html">
 							<h3> <div className="total">
