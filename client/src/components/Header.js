@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../actions/userAction'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
 	const userLogin = useSelector((state) => state.userLogin)
@@ -45,9 +46,11 @@ const Header = () => {
 								<a onClick={logutHandler}>Logout</a>
 
 
-						):  <a href="/Login">Login</a>
+
+						):  <Link to="/Login"  >Login</Link>
 						}
-						<span>or</span><a href="/Registration">Signup</a>
+						<span>or</span>
+						<Link to="/Registration"  >Singup</Link>
 						</p>
 						<div className="cart box_1">
 						<a href="checkout.html">
