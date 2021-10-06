@@ -6,6 +6,7 @@ import Single from './components/Single'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import Registration from './components/Registration'
+import Profile from './components/Profile'
 import Products from './components/Products'
 import Contact from './components/Contact'
 import Checkout from './components/Checkout'
@@ -19,6 +20,8 @@ function App() {
         <Route path="/Single/:id" component={Single} exact></Route>
         <Route path="/Login" component={Login} exact></Route>
         <Route path="/Registration" component={Registration} exact></Route>
+        <Route path="/profile" component={Profile}></Route>
+
         <Route path="/Products" component={Products} exact></Route>
         <Route path="/Contact" component={Contact} exact></Route>
         <Route path="/Checkout/:id?" component={Checkout} exact></Route>
