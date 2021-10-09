@@ -11,6 +11,8 @@ import Products from './components/Products'
 import Contact from './components/Contact'
 import Checkout from './components/Checkout'
 import Shipping from './components/Shipping'
+import Payment from './components/Payment';
+import PlaceOrder from './components/PlaceOrder';
 
 function App() {
   return (
@@ -27,6 +29,11 @@ function App() {
         <Route path="/Contact" component={Contact} exact></Route>
         <Route path="/Shipping" component={Shipping} exact></Route>
         <Route path="/Checkout/:id?" component={Checkout} exact></Route>
+
+        <Route path="/payment" component={Payment}></Route>
+        <Route path="/placeorder" component={PlaceOrder}></Route>
+
+
         <Footer />
 
     </Router>

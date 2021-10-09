@@ -43,7 +43,7 @@ const Shipping = ({ history}) => {
                     <span>Post Code</span>
                     <input type="text" name="postalCode" id="postalCode" onChange={(e) => setPostalCode(e.target.value)}/>
                     <span>Country</span>
-                    <input type="email" name="country" id="country" onChange={(e) => setCountry(e.target.value)}/>
+                    <input type="text" name="country" id="country" onChange={(e) => setCountry(e.target.value)}/>
                     </div>
                     <div className="clearfix"> </div>
                 <input type="submit" defaultValue="submit" />
