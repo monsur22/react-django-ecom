@@ -23,10 +23,11 @@ const Checkout = ({match, location, history}) => {
         const removeFromCartHandler = (id) => {
             dispatch(removeFromCart(id))
         }
-        // const checkoutHandler = (id) => {
-        //     // console.log('checkout')
-        //     history.push('/login?redirect=shipping')
-        // }
+        const checkoutHandler = (id) => {
+            // console.log('checkout')
+            history.push('/login?redirect=Shipping')
+            // history.push('/Shipping')
+        }
 
     return (
 
@@ -65,7 +66,7 @@ const Checkout = ({match, location, history}) => {
                     $ {cartItems.reduce((a, c) => a + c.price * c.qty, 0).toFixed(2)}
                 </h3>
                 </div>
-                <a href="#" className=" to-buy">PROCEED TO BUY</a>
+                <a href="#" className=" to-buy"onClick={checkoutHandler} disabled={cartItems.length === 0}>PROCEED TO BUY</a>
                 <div className="clearfix"> </div>
             </div>
             </div>

@@ -10,6 +10,7 @@ import Profile from './components/Profile'
 import Products from './components/Products'
 import Contact from './components/Contact'
 import Checkout from './components/Checkout'
+import Shipping from './components/Shipping'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
 
         <Route path="/Products" component={Products} exact></Route>
         <Route path="/Contact" component={Contact} exact></Route>
+        <Route path="/Shipping" component={Shipping} exact></Route>
         <Route path="/Checkout/:id?" component={Checkout} exact></Route>
         <Footer />
 
